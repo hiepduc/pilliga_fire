@@ -1,0 +1,1 @@
+/home/duch/mywrf/WRF/runpillaga/wrf_AOD_pilliga_calculate.ncl

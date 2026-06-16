@@ -1,0 +1,1 @@
+/home/duch/mywrf/WRF/runpillaga/wrf_finn_CO_extract.ncl

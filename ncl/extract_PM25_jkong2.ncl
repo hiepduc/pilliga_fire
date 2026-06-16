@@ -1,0 +1,1 @@
+/home/duch/mywrf/WRF/runpillaga/extract_PM25_jkong2.ncl

@@ -1,0 +1,1 @@
+/home/duch/mywrf/WRF/runpillaga/extract_PM25_2023_12_06.ncl

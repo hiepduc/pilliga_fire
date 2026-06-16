@@ -1,0 +1,1 @@
+/home/duch/mywrf/WRF/runpillaga/wrf_line_transect_11feb2019.ncl

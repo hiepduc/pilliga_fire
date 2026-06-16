@@ -1,0 +1,1 @@
+/home/duch/mywrf/WRF/runpillaga/d01_contour2_fire_wind_bc_presheight.ncl

@@ -1,0 +1,1 @@
+/home/duch/mywrf/WRF/runpillaga/d01_contour2_pillaga_wind_pres_temp.ncl

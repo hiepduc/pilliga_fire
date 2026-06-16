@@ -1,0 +1,1 @@
+/home/duch/mywrf/WRF/runpillaga/wrf_fire_BC_extract.ncl

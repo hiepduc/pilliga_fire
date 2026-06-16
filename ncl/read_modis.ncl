@@ -1,0 +1,1 @@
+/home/duch/mywrf/WRF/runpillaga/read_modis.ncl

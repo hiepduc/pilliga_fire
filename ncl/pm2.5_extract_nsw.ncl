@@ -1,0 +1,1 @@
+/home/duch/mywrf/WRF/runpillaga/pm2.5_extract_nsw.ncl

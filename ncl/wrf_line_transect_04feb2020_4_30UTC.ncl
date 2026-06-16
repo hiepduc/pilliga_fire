@@ -1,0 +1,1 @@
+/home/duch/mywrf/WRF/runpillaga/wrf_line_transect_04feb2020_4_30UTC.ncl

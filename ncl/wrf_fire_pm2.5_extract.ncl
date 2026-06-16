@@ -1,0 +1,1 @@
+/home/duch/mywrf/WRF/runpillaga/wrf_fire_pm2.5_extract.ncl
