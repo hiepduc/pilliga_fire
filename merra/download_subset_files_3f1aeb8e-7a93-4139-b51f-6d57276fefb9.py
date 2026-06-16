@@ -1,0 +1,73 @@
+"""
+Python script for downloading data from a NASA Harmony job
+
+Requirements:
+    > pip install harmony-py
+    > pip install earthaccess
+
+To run the script: `python download_subset_files_3f1aeb8e-7a93-4139-b51f-6d57276fefb9.py`
+
+You will be prompted for your Earthdata Login (https://urs.earthdata.nasa.gov) or (https://urs.uat.earthdata.nasa.gov) username and password.
+
+If you would rather, you can store your EDL credentials in a .netrc file:
+    > cd ~
+    > touch .netrc
+    > echo "machine urs.earthdata.nasa.gov login uid_goes_here password password_goes_here" > .netrc
+    > echo "machine urs.uat.earthdata.nasa.gov login uid_goes_here password password_goes_here" > .netrc
+    > chmod 0600 .netrc
+
+
+"""
+
+from harmony import Client
+from harmony.config import Environment
+import netrc
+from getpass import getpass
+import earthaccess
+
+
+def main(job_id="3f1aeb8e-7a93-4139-b51f-6d57276fefb9"):
+    login, password = get_login_credentials()
+    harmony_client = Client(auth=(login, password), env=Environment.PROD)
+    earthaccess.login(system=earthaccess.PROD)
+
+    print("Getting the subset job status from Harmony for job: ", job_id)
+    job = harmony_client.status(job_id)
+
+    if job["status"] != "successful" and job["status"] != "complete_with_errors":
+        # we need to wait for the job to complete
+        print("Waiting for the job to finish")
+        harmony_client.wait_for_processing(job_id, show_progress=True)
+
+    # get a list of the jobs data urls
+    urls = list(harmony_client.result_urls(job_id))
+
+    print("Downloading ", sum(1 for _ in urls), " files using earthaccess..\n")
+    earthaccess.download(urls,f"./{job_id}")
+
+    print(f"\nFinished downloading files! You can find them under the /3f1aeb8e-7a93-4139-b51f-6d57276fefb9 directory")
+
+
+def get_login_credentials():
+    login = None
+    password = None
+
+    try:
+        nrc = netrc.netrc()
+        if("Environment.PROD"=="Environment.PROD"):
+            login, _account, password = nrc.authenticators("urs.earthdata.nasa.gov")
+        else:
+            login, _account, password = nrc.authenticators("urs.uat.earthdata.nasa.gov")
+    except Exception:
+        login = None
+        password = None
+
+    if not login:
+        login = input("Earthdata Login username: ")
+        password = getpass("Password: ")
+        
+    return login, password
+
+
+if __name__ == "__main__":
+    main()
