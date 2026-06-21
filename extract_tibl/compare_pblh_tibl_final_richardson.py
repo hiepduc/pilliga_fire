@@ -10,7 +10,7 @@ from netCDF4 import Dataset
 # SETTINGS
 # ==========================================================
 
-WRF_FILE = "mnt/scratch_lustre/duch/runpillaga/wrfout_d02_2023-12-19_00:00:00"
+WRF_FILE = "/mnt/scratch_lustre/duch/runpillaga/wrfout_d02_2023-12-19_01:00:00"
 
 LAT_SITE = -33.89
 LON_SITE = 151.05
